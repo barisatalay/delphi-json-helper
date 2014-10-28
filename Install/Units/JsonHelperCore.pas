@@ -11,10 +11,10 @@ Notes:
 
 interface
 Uses
-  XSuperObject,
   System.Classes,System.SysUtils,
   Generics.Collections,
   FMX.Listbox,FMX.Forms,
+  XSuperObject,
   IdHttp;
 
 const
@@ -22,6 +22,7 @@ const
   NoItem = 'Items not found!';
   FieldName = 'Field name must not be null!';
   NoJson = 'Unsupported json format! Must JSON Array like this [{..},{..}]';
+  NoWhere = 'Unsupported where clause! Must where clause like this ''manga:"naruto", aktive:0 ... ''';
   DataNull = 'Response data is null.';
   HT = 'http';
   VA = 'Value';
@@ -35,6 +36,7 @@ type
     private
       FTimeOut: Integer;
       FActive: Boolean;
+      WhereJSON,
       FData: ISuperObject;
       FFieldObject: TObjectList<TDictionary<String,Variant>>;
       FValues: TDictionary<String,Variant>;
@@ -130,7 +132,9 @@ begin
     FData.A[VA].Sort(function(const Left, Right: ICast): Integer begin //SORT OLAYI BRADA
       Result := CompareText(Left.AsObject.S[FSortField], Right.AsObject.S[FSortField]);
     end);
-    
+
+  FFieldObject.Clear;
+
   for AMember in FData.A[VA] do
   begin
     FValues  := TDictionary<String,Variant>.Create;
@@ -345,6 +349,7 @@ begin
     Get;
   end else
   begin
+    FFieldObject.Clear;
     FSortField := '';
     SFList := '';
   end;
