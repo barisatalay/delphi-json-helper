@@ -1,0 +1,80 @@
+object Form26: TForm26
+  Left = 0
+  Top = 0
+  Caption = 'Form26'
+  ClientHeight = 395
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [dkDesktop]
+  DesignerMobile = True
+  DesignerWidth = 384
+  DesignerHeight = 395
+  DesignerDeviceName = 'Google Nexus 4'
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object ListBox1: TListBox
+    Align = alClient
+    Height = 110.000000000000000000
+    TabOrder = 0
+    Width = 384.000000000000000000
+    DefaultItemStyles.ItemStyle = 'listboxitemnodetail'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+  end
+  object Button1: TButton
+    Align = alTop
+    Height = 57.000000000000000000
+    TabOrder = 1
+    Text = 'Active Json Helper'
+    Trimming = ttCharacter
+    Width = 384.000000000000000000
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Align = alTop
+    Height = 57.000000000000000000
+    Position.Y = 171.000000000000000000
+    TabOrder = 2
+    Text = 'Save JSON'
+    Trimming = ttCharacter
+    Width = 384.000000000000000000
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = alTop
+    Height = 57.000000000000000000
+    Position.Y = 114.000000000000000000
+    TabOrder = 3
+    Text = 'Edit Json'
+    Trimming = ttCharacter
+    Width = 384.000000000000000000
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Align = alTop
+    Height = 57.000000000000000000
+    Position.Y = 57.000000000000000000
+    TabOrder = 4
+    Text = 'List All Json'
+    Trimming = ttCharacter
+    Width = 384.000000000000000000
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Align = alTop
+    Height = 57.000000000000000000
+    Position.Y = 228.000000000000000000
+    TabOrder = 5
+    Text = 'Read JSON on Local'
+    Trimming = ttCharacter
+    Width = 384.000000000000000000
+    OnClick = Button5Click
+  end
+  object JSONHelper1: TJSONHelper
+    Active = False
+    TimeOut = 5000
+    Left = 176
+    Top = 272
+  end
+end
