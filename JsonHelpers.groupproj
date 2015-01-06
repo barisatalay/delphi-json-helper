@@ -12,6 +12,9 @@
         <Projects Include="Demos\XE5\XE5Example.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Demos\XE6\XE6Examples.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +50,23 @@
     <Target Name="XE5Example:Make">
         <MSBuild Projects="Demos\XE5\XE5Example.dproj" Targets="Make"/>
     </Target>
+    <Target Name="XE6Examples">
+        <MSBuild Projects="Demos\XE6\XE6Examples.dproj"/>
+    </Target>
+    <Target Name="XE6Examples:Clean">
+        <MSBuild Projects="Demos\XE6\XE6Examples.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XE6Examples:Make">
+        <MSBuild Projects="Demos\XE6\XE6Examples.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="JsonHelper;XE7Example;XE5Example"/>
+        <CallTarget Targets="JsonHelper;XE7Example;XE5Example;XE6Examples"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="JsonHelper:Clean;XE7Example:Clean;XE5Example:Clean"/>
+        <CallTarget Targets="JsonHelper:Clean;XE7Example:Clean;XE5Example:Clean;XE6Examples:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="JsonHelper:Make;XE7Example:Make;XE5Example:Make"/>
+        <CallTarget Targets="JsonHelper:Make;XE7Example:Make;XE5Example:Make;XE6Examples:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -58,6 +58,9 @@ type
       procedure DoSort;
       function GetsJSON: TStringList;
       procedure SetJSON(const Value: TStringList);
+      procedure Where(Params: String);
+      function AradanSec( text, ilk, son:String ): String;
+      function ClearAbidikGubidik(Text, ClearItem: String): String;
     public
       constructor Create(AOwner: TComponent); override;
       destructor  Destroy; override;
@@ -97,13 +100,26 @@ begin
   if not FActive then SetRaise(NotActive);
 end;
 
+function TJSONHelper.AradanSec(text, ilk, son: String): String;
+begin
+  Delete(Text, 1, pos(ilk, Text) + Length(ilk)-1);
+  Result := Copy(Text, 1, Pos(Son, Text)-1);
+end;
+
 function TJsonHelper.BOF: Boolean;
 begin
   AktifKontrol;
+  Result := False;
   if FIndex = 0 then
     Result := True
   else if FIndex > 0 then
     Result := False;
+end;
+
+function TJSONHelper.ClearAbidikGubidik(Text, ClearItem: String): String;
+begin
+  Result := Text;
+  StringReplace(Result, ClearItem, '', [rfReplaceAll,rfIgnoreCase]);
 end;
 
 constructor TJsonHelper.Create(AOwner: TComponent);
@@ -119,7 +135,7 @@ destructor TJsonHelper.Destroy;
 begin
   FJSON.Free;
   FFieldObject.Free;
-  FValues.Free;
+//  FValues.Free; 06.01.2015
   inherited;
 end;
 
@@ -149,6 +165,7 @@ end;
 function TJsonHelper.EOF: Boolean;
 begin
   AktifKontrol;
+  Result := False;
 
   if FIndex = FFieldObject.Count + 1 then
   begin
@@ -209,6 +226,11 @@ begin
     if Pos(HT,T) > 0 then
     begin
       T := Get(Trim(FJSON.text));
+      if Pos('<body>',T) > 0 then
+      begin
+        T := String(AradanSec(T,'<body>','</body>'));
+        T := StringReplace(trim(T), '#$A', '', [rfReplaceAll]);
+      end;
       if T.Trim = '' then
         SetRaise(DataNull);
     end else
@@ -390,6 +412,30 @@ begin
   FSortField := Value;
   
   DoSort;
+end;
+
+procedure TJSONHelper.Where(Params: String);//Example manga: "naruto" , ....
+var
+  AMember: IMember;
+  X: ISuperObject;
+begin
+  try
+    Params := '{ ' + Params;
+    Params := Params + ' }';
+
+    X := SO(Params);
+
+    for AMember in X do
+      AMember.AsString;
+
+
+
+  finally
+    SetRaise(NoWhere);
+  end;
+
+
+
 end;
 
 end.
