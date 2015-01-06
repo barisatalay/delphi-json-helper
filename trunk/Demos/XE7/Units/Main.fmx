@@ -30,7 +30,7 @@ object Form3: TForm3
   object ListBox1: TListBox
     Align = Client
     Size.Width = 640.000000000000000000
-    Size.Height = 319.000000000000000000
+    Size.Height = 290.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 8
     DisableFocusEffect = True
@@ -64,9 +64,19 @@ object Form3: TForm3
     Size.Width = 640.000000000000000000
     Size.Height = 29.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 19
+    TabOrder = 20
     Text = 'Read JSON on Local'
     OnClick = Button5Click
+  end
+  object Button6: TButton
+    Align = Top
+    Position.Y = 161.000000000000000000
+    Size.Width = 640.000000000000000000
+    Size.Height = 29.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 19
+    Text = 'Use Where Clause'
+    OnClick = Button6Click
   end
   object JSONHelper1: TJSONHelper
     JSON.Strings = (

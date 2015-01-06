@@ -10,18 +10,19 @@ uses
 
 type
   TForm3 = class(TForm)
-    Button1: TButton;
     Button2: TButton;
     ListBox1: TListBox;
     JSONHelper1: TJSONHelper;
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
+    Button6: TButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,6 +77,11 @@ begin
   JSONHelper1.JSON.Add(JSONHelper1.FromFile(T));
   JSONHelper1.Active := True;
   Button2Click(Sender);
+end;
+
+procedure TForm3.Button6Click(Sender: TObject);
+begin
+  JSONHelper1.Where('manga:"Bleach"');
 end;
 
 end.

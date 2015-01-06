@@ -35,8 +35,6 @@ requires
   IndySystem;
 
 contains
-  JsonHelperCore in 'Units\JsonHelperCore.pas',
-  XSuperJSON in 'Units\XSuperJSON.pas',
-  XSuperObject in 'Units\XSuperObject.pas';
+  JsonHelperCore in 'Units\JsonHelperCore.pas';
 
 end.
